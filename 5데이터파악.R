@@ -1,20 +1,19 @@
+#데이터 파악하는 함수 head, tail, View, dim, str, summary -The head tail Views star dimensions' summary-
 exam <- read.csv("csv_exam.csv")
 
 head(exam)#head는 앞에서 6행까지 출력
-
 head(exam, 10)
 
 tail(exam)#tail은 뒤에서부터 6행까지 출력
-
 tail(exam, 10)
 
 View(exam)
-dim(exam) #20행, 5열
 
+dim(exam) #20raws(observations), 5column(variables)
 
 str(exam) #데이터 속성 확인 (20 observations(관측치), 5variables, int는 integers)
 
-summary(exam) #요약 통계량 출력(median은 중앙값, 1stQu는 1사분위수, 3rdQu는 3사 분위수)
+summary(exam) #요약 통계량 출력(median은 중앙값, 1stQu는 1사분위수-하위 25%, 3rdQu는 3사 분위수-하위 75%)
 
 istall.packages("ggplot2")
 mpg <- as.data.frame(ggplot2::mpg) #ggplot2의 mpg 데이터를 데이터 프레임 형태로 불러오기, ::은 특정 함수나 데이터 지정
