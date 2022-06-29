@@ -11,7 +11,6 @@ var3 <- seq(5, 80, by=5) #seq는 똑같이 연속 정수변수, by는 일정 간
 
 str1 <- "a"
 str2 <- c("hello", "world", "I'm", "Minsu")
-str2
 
 #number function
 mean(var1)
@@ -21,7 +20,7 @@ min(var1)
 #text function
 paste(str2, collapse = " ") #단어마다 띄어쓰기로 합치기
 
-#make new variable with functoin
+#make new variable with function
 x_mean <- mean(var1)
 x_mean
 
@@ -31,7 +30,7 @@ install.packages("ggplot2")#패키지 이름엔 항상 따옴표하기
 library(ggplot2)#라이브러리 불러오기
 
 qplot(data=mpg, x=hwy)
-qplot(data=mpg, x=drv, y=hwy)
+qplot(data=mpg, x=drv,y=hwy)
 qplot(data=mpg, x=drv,y=hwy, geom="line")#선그래프 형태
 qplot(data=mpg, x=drv,y=hwy, geom="boxplot")#박스플롯 형태, 파라미터를 바꾸면 그래프 형태가 달라짐짐
 qplot(data=mpg, x=drv,y=hwy, geom="boxplot", colour=drv)#drv에 색깔별로 분류류

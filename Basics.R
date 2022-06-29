@@ -1,27 +1,4 @@
-var1 <- c(1, 2, 5, 7, 8)
-var1
-
-var2 <- c(1:5)
-var2
-
-var3 <- seq(1,5)
-var3
-
-
-var4 <- seq(1, 20, by=2)
-var4
-
-str1 <- "a"
-str1
-
-str2 <- "text"
-str2
-
-str3 <- "Hello world!"
-str3
-
-str4 <- c("Hello", "world", "is", "good", "mite")
-str4
+#2022-06-29
 
 mean(var2)
 max(var2)
@@ -47,5 +24,8 @@ qplot(data=mpg, x=drv,y=hwy, geom="line")
 qplot(data=mpg, x=drv,y=hwy, geom="boxplot")
 qplot(data=mpg, x=drv,y=hwy, geom="boxplot", colour=drv)
 
+library(ggplot2)
 #qplot 함수 메뉴얼 출력
 ?qplot
+
+geom = smooth to geom = c("point", "smooth")
