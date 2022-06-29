@@ -1,4 +1,4 @@
-#DataFrame, column is variable, row is case(specific, each)
+#Data Frame, column is variable, row is observation or case(specific, each)
 #many column, better computer, many rows, better analytics
 
 #df 만들기
@@ -15,7 +15,7 @@ mean(df_midterm$math)#전체 수학 평균
 
 df_midterm <- data.frame(english = c(90,80,60,70),
                         math = c(50,60,100,20),
-                        c = c(1,1,2,2)) #이런 식으로 한 번에 입력 가능함.
+                        class = c(1,1,2,2)) #이런 식으로 한 번에 입력 가능함.
 df_midterm
 df_fruit <- data.frame(fruit=c("apple","strawberry","watermelon"),
                        price=c(1800, 1500, 3000),

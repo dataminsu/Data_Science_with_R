@@ -1,13 +1,19 @@
 #데이터 전처리(Data Processing, Data Manipulation, Data Wrangling, Data Munging) dplyr가 많이 사용됨.
 library(dplyr)
-exam <- read.csv("csv_exam.csv")
-exam
+#Data Processing function
+filter()#variable extract
+select()#Observation extract
+arrange()#arrange
+mutate()#add variable
+summarise()#통계치 산출
+group_by()#집단별로 나누기
+left_join()#merge column
+bind_rows()#merge observation
 
-# %>% 파이프 연산자(pipe Operator)는 Ctrl+Shift+M을 누르면 소환됌! 함수와 연결하는 역할을 함
+
+# %>% 파이프 연산자(pipe Operator)는 Ctrl+Shift+M을 누르면 됨됨! 함수와 연결하는 역할을 함
 exam %>% filter(class ==1) 
-exam %>% filter(class ==2)
 exam %>% filter(class !=2) #!=는 ~가 아닌 경우
-exam %>% filter(math >50)
 exam %>% filter(english >=80)
 
 # &로 여러 조건 필터 걸기, or(Ctrl +\)로 둘 중 하나 만족 필터 걸기
