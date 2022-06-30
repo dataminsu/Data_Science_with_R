@@ -1,8 +1,8 @@
 #데이터 전처리(Data Processing, Data Manipulation, Data Wrangling, Data Munging) dplyr가 많이 사용됨.
 library(dplyr)
 #Data Processing function
-filter()#variable extract
-select()#Observation extract
+filter()#observations extract
+select()#Variables(columns) extract
 arrange()#arrange
 mutate()#add variable
 summarise()#통계치 산출
