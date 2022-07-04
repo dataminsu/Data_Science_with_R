@@ -16,7 +16,7 @@ mean(df_midterm$math)#전체 수학 평균
 #외부 데이터 이용하기
 install.packages("readxl")
 library(readxl)
-
+d
 df_exam <- read_excel("excel_exam.xlsx") #exam의 df를 read_excel("불러올 파일")로 생성
 df_exam
 
