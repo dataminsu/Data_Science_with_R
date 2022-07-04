@@ -37,7 +37,6 @@ cty5 <- mpg %>%
         head(5)
 
 View(cty5)
-
 ggplot(data = cty5, aes(x= reorder(manufacturer, -cty_mean), y=cty_mean)) + 
     geom_col()
 ggplot(data = mpg, aes(x= class)) + geom_bar()

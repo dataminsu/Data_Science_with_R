@@ -1,21 +1,21 @@
 #데이터 전처리(Data Processing, Data Manipulation, Data Wrangling, Data Munging) dplyr가 많이 사용됨.
 library(dplyr)
 #Data Processing function
-<<<<<<< HEAD
+
 filter(class %in% c(1,3,5) )#variable extract
 select(math,-english)#Observation extract
 arrange(desc(one_variable))#arrange
 mutate(total=ifelse(mpg$drv=='4', "4", ifelse(mpg$drv=='r', "R", "F"))) %>% head#add variable
 summarise(mean_math=mean(math), n=n())#전체를 요약하기보단 group_by와 함께 집단별 통계량 산출
 group_by(species)#집단별로 나누기
-=======
+
 filter()#observations extract
 select()#Variables(columns) extract
 arrange()#arrange
 mutate()#add variable
 summarise()#통계치 산출
 group_by()#집단별로 나누기
->>>>>>> 1df275a39952e04c93aae6cea338cca994f99f57
+
 left_join()#merge column
 bind_rows()#merge observation
 
