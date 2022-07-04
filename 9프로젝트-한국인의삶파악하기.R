@@ -4,7 +4,7 @@ library(dplyr)
 library(ggplot2)
 library(readxl)
 raw_welfare <- read.spss(file ="Koweps_hpc10_2015_beta1.sav",
-                         to.data.frame = T)#SPSS 파일을 데이터프레임으로 변환, 이 파라미터가 없으면 리스트형태로 불러옴
+                         to.data.frame = T)#SPSS 파일을 데이터프레임으로 변환, 이 파라미터가 없으면 리스트형태
 welfare <- raw_welfare
 View(welfare)
 dim(welfare)

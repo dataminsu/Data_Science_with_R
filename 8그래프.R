@@ -1,19 +1,15 @@
 install.packages("ggplot2")
 library(ggplot2)
+
 #산점도scatter plot - 나이와 소득처럼 연속된 값을 가진 두 변수의 관계를 표현할 때 쓰임
-ggplot(data = mpg, aes(x = displ, y = hwy)) #배경설정
 ggplot(data = mpg, aes(x = displ, y = hwy)) + # 데이터 축
     geom_point() + #그래프 종류
       xlim(3,6) + #세부설정 etc
         ylim(10,30)
-#dplyr은 패키지함수를 %>% 로 연결, ggplot은 +로 연결
+#dplyr은 패키지함수를 pipe operator 로 연결, ggplot은 +로 연결
 
 
 #혼자서 해보기
-ggplot(data=mpg, aes(x=cty, y=hwy))
-ggplot(data=mpg, aes(x=cty, y=hwy)) +
-  geom_point()
-
 midwest <- as.data.frame("ggplot2":: midwest)
 options(scipen =99) #x축 정수형 표현
 ggplot(data = midwest, aes(x= poptotal, y=popasian))
@@ -61,5 +57,4 @@ ggplot(data = mpg, aes(x=reorder(drv,-hwy), y=hwy)) +
 cty3 <- mpg %>% group_by(class) %>%
        filter(class==c("compact", "suv", "subcompact"))
 
-View(cty3)
 ggplot(data=cty3, aes(x=class, y=cty)) + geom_boxplot()

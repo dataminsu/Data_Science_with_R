@@ -2,17 +2,6 @@
 #many column, better computer, many rows, better analytics
 
 #df 만들기
-english <-c(90,80,60,70)
-
-math <- c(50,60,100,20)
-
-class <-c(1,1,2,2) #1반, 2반 구분
-
-df_midterm <- data.frame(english, math, class)
-
-mean(df_midterm$english)#전체 영어 평균, $는 df 안 column지정 할 때 쓰임
-mean(df_midterm$math)#전체 수학 평균
-
 df_midterm <- data.frame(english = c(90,80,60,70),
                         math = c(50,60,100,20),
                         class = c(1,1,2,2)) #이런 식으로 한 번에 입력 가능함.
@@ -21,6 +10,8 @@ df_fruit <- data.frame(fruit=c("apple","strawberry","watermelon"),
                        price=c(1800, 1500, 3000),
                        sell=c(24,38,13))
 
+mean(df_midterm$english)#전체 영어 평균, $는 df 안 column지정 할 때 쓰임
+mean(df_midterm$math)#전체 수학 평균
 
 #외부 데이터 이용하기
 install.packages("readxl")
@@ -28,9 +19,6 @@ library(readxl)
 
 df_exam <- read_excel("excel_exam.xlsx") #exam의 df를 read_excel("불러올 파일")로 생성
 df_exam
-
-mean(df_exam$english)
-mean(df_exam$science)
 
 #외부 데이터 컨트롤
 df_exam_novar <- read_excel("excel_exam_novar.xlsx")

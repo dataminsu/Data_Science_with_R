@@ -1,52 +1,48 @@
 #데이터 전처리(Data Processing, Data Manipulation, Data Wrangling, Data Munging) dplyr가 많이 사용됨.
 library(dplyr)
 #Data Processing function
+<<<<<<< HEAD
+filter(class %in% c(1,3,5) )#variable extract
+select(math,-english)#Observation extract
+arrange(desc(one_variable))#arrange
+mutate(total=ifelse(mpg$drv=='4', "4", ifelse(mpg$drv=='r', "R", "F"))) %>% head#add variable
+summarise(mean_math=mean(math), n=n())#전체를 요약하기보단 group_by와 함께 집단별 통계량 산출
+group_by(species)#집단별로 나누기
+=======
 filter()#observations extract
 select()#Variables(columns) extract
 arrange()#arrange
 mutate()#add variable
 summarise()#통계치 산출
 group_by()#집단별로 나누기
+>>>>>>> 1df275a39952e04c93aae6cea338cca994f99f57
 left_join()#merge column
 bind_rows()#merge observation
 
 
 # %>% 파이프 연산자(pipe Operator)는 Ctrl+Shift+M을 누르면 됨됨! 함수와 연결하는 역할을 함
+exam <- read.csv("csv_exam.csv")
 exam %>% filter(class ==1) 
 exam %>% filter(class !=2) #!=는 ~가 아닌 경우
-exam %>% filter(english >=80)
 
-# &로 여러 조건 필터 걸기, or(Ctrl +\)로 둘 중 하나 만족 필터 걸기
-exam %>% filter(class ==1 & english >=80)
-exam %>% filter(math>90 | english >90)
-exam %>% filter(math<50 & science <=40)
-exam %>% filter(class ==1 | class==2 | class==5)
+# &로 여러 조건 필터 걸기, or(Shift +\)(vertical bar)로 둘 중 하나 만족 필터 걸기
+exam %>% filter(class ==1 & english >=80 & math !=50)
+exam %>% filter(class ==1 | class==2 |class==5)
 
-# %in% 매치 연산자(match operator)를 사용해서 간단히 할 수 있음, 지정값이 조건 목록에 해당 가능한지 확인하는 기능
+# %in% 매치 연산자(match operator)를 사용해서 간단히 할 수 있음, 지정값이 조건 목록에 해당하는 지 확인
 exam %>% filter(class %in% c(1,2,5))
+exam_class <- exam %>% filter(class %in% c(1,3,4))
 
-#추출한 행으로 새로운 데이터 만들기기
+#추출한 행으로 새로운 데이터 만들기
 class1 <- exam %>% filter(class ==1)
 class2 <- exam %>% filter(class ==2)
 mean(class1$math)
-mean(class2$math)
-#논리연산자-logical operator/ 산술연산자-Arithmetic operator 
-#혼자서 해보기
-#Q1
-disel_1 <- mpg %>% filter(displ<=4)
-disel_2 <-mpg %>% filter(displ>=5)
-a<-mean(disel_1$hwy)
-b<-mean(disel_2$hwy)
-a>b
-#Q2
-toyota <- mpg %>% filter(manufacturer=='toyota')
-audi <- mpg %>% filter(manufacturer=='audi')
-mean(toyota$cty) >mean(audi$cty)
-#Q3
-m3<-mpg %>% filter(manufacturer %in% c("c %>% %>% hevrolet", "ford", "honda"))
-mean(m3$hwy)
+#논리연산자(logical operator)
+#<,>,<=,>=,!=,==,%in%,|,&
+#산술연산자(Arithmetic operator) 
+#+,-,*,/,^,**,%|%(나눗셈의 몫),%%(나눗셈의 나머지)
 
-#필요한 변수만 추출하기
+#필요한 변수만 추출하기, select 함수
 exam %>% select(english, math)
 exam %>% select(-english, -math)
 
@@ -54,63 +50,34 @@ exam %>% select(-english, -math)
 exam %>%
   filter(class ==1) %>%
   select(english)
+
 #데이터의 일부만 출력하기
 exam %>%
   select(id, math) %>% 
   head(10)
 
-#혼자서 해보기
-sample1<-mpg %>% 
-  select(class, cty)
-head(sample1)
-
-suv_cty <- mpg %>% 
-  filter(class=='suv') %>% 
-  select(cty)
-
-compact_cty <- mpg %>% 
-  filter(class=='compact') %>% 
-  select(cty)
-mean(suv_cty$cty) > mean(compact_cty$cty)
-#mean을 구할 때는 suv_cty만 입력해서는 안나온다. 어떤 vairable인지 확실하게 입력할 것! $를 이용해서~
-
 #순서대로 정렬하기
-exam %>% arrange(math)
 exam %>% arrange(desc(math)) #descending은 오직 1개의 variable만 가져올 수 있음
-exam %>% arrange(class, math)
+exam %>% arrange(class, math) #arrange의 기본은 오름차수임
 
-audi <- mpg %>% 
-  filter(manufacturer == 'audi')
-audi %>% 
-  arrange(desc(hwy)) %>%
-  head(5)
-
-#파생변수 추가하기
+#파생변수(derived) 추가하기
 exam1 <- exam %>% 
-  mutate (total = math + english + science, 
+  mutate(total = math + english + science, 
           mean = (math + english + science) /3,
           test = ifelse( science >= 60, "pass", "fail"))
-exam %>% 
-  mutate(total = english + science + math) %>%
-  arrange(total) %>% 
-  head
-
-#혼자서 해보기
-mpg <- as.data.frame(ggplot2::mpg)
-mpg %>%
-  mutate(cfv=cty+hwy, efv=cfv/2) %>% 
-  head(10)
 
 #집단별로 요약하기
 exam %>% summarise(mean_math=mean(math))
-#dbl은 double, 부동소수점 int는 integer 그리고 tibble: 5 x 2는 2행 5열의 티블 형태라는 걸 뜻함
+#tibble: 5 x 2는 2행 5열의 티블 형태라는 걸 뜻함
 exam %>% 
   group_by(class) %>% 
   summarise(mean_math = mean(math))
+
 exam %>% 
   group_by(class) %>% 
   summarise(mean_math = mean(math), median_math=median(math), sum_math = sum(math), n=n())
-#n()은 행 개수, 그래서 따로 변수 입력 x
+
+#n()은 행 개수, 그래서 따로 변수 입력 x, 학생수 셀 때 유용함
 mpg %>% 
   group_by(manufacturer, drv) %>%
   summarise(mean_cty = mean(cty)) %>% 
@@ -120,7 +87,7 @@ mpg <- as.data.frame(ggplot2::mpg)
 mpg %>%
   group_by(manufacturer) %>% 
   filter(class =="suv") %>%
-  mutate(tot = (cty+hwy)/2) %>% #통합 연비 변수 생성 ---이 과정을 빼먹어서 틀렸음..ㅠ
+  mutate(total = (cty+hwy)/2) %>% #통합 연비 변수 생성 ---이 과정을 빼먹어서 틀렸음..ㅠ
   summarise(cfe=mean(tot)) %>% #통합 연비 평균 산출
   arrange(desc(cfe)) %>% 
   head(5)
