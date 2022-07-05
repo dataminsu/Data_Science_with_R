@@ -16,13 +16,12 @@ mutate()#add variable
 summarise()#통계치 산출
 group_by()#집단별로 나누기
 
-left_join()#merge column
-bind_rows()#merge observation
+left_join()#merge column -가로 합치기
+bind_rows()#merge observation -세로 합치기
 
 
-# %>% 파이프 연산자(pipe Operator)는 Ctrl+Shift+M을 누르면 됨됨! 함수와 연결하는 역할을 함
+# %>% 파이프 연산자(pipe Operator)는 Ctrl+Shift+M을 누르면 됨! 함수와 연결하는 역할을 함
 exam <- read.csv("csv_exam.csv")
-exam %>% filter(class ==1) 
 exam %>% filter(class !=2) #!=는 ~가 아닌 경우
 
 # &로 여러 조건 필터 걸기, or(Shift +\)(vertical bar)로 둘 중 하나 만족 필터 걸기
@@ -58,7 +57,7 @@ exam %>%
 
 #순서대로 정렬하기
 exam %>% arrange(desc(math)) #descending은 오직 1개의 variable만 가져올 수 있음
-exam %>% arrange(class, math) #arrange의 기본은 오름차수임
+exam %>% arrange(class, math) #arrange의 기본은 오름차수임, class, math순으로 정렬
 
 #파생변수(derived) 추가하기
 exam1 <- exam %>% 

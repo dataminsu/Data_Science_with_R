@@ -8,6 +8,7 @@ tail(exam, 10)
 View(exam)
 dim(exam) #20raws(observations), 5column(variables)
 str(exam) #데이터 속성 확인 (20 observations(관측치), 5variables, int는 integers)
+glimpse(exam) #str과 똑같은 기능임
 #chr = character, num=number(실수), dbl(=float), factor(여러가지 섞인 것)
 summary(exam) #요약 통계량 출력(median은 중앙값, 1stQu는 1사분위수-하위 25%, 3rdQu는 3사 분위수-하위 75%)
 
@@ -60,7 +61,7 @@ ggplot(data=means, aes(x=hwy_mean, y=cty_mean, color=manufacturer)) + geom_point
    ggtitle("Means by manufacturers, using by different colors")
 
 View(mpg)
-ggplot(data=mpg,aes(x=hwy, y=cty, color=manufacturer, shape=class)) + geom_point(size=4) + ggtitle("Manufacturer and models")
+ggplot(data=mpg,aes(x=hwy, y=cty, color=manufacturer, shape=class)) + geom_point(size=4) + ggtitle("Manufacturer and models") + labs(title="Manufacturer and models", x="per mile on highway", y="per mile on city")
 
 # + geom_text(aes(label=model, size=0.6, vjust=20, hjust=5)) # vjust=-1 위로, hjust=1 오른쪽
 
